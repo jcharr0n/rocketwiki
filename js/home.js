@@ -1,0 +1,3 @@
+;(function() {
+  /* yaaaaay iife template */
+})();
