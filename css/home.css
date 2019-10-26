@@ -1,3 +1,48 @@
 body {
+  background-color: orange;
+}
+
+body,html{
+  margin: 0;
+  padding: 0;
+}
+
+#titleBar {
+  position: fixed;
+  height: 200px;
+  width: 100%;
   background-color: lightblue;
+}
+
+#slideBar {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  top: 210px;
+  overflow: hidden;
+  background-color: #5c5c5c;
+}
+
+.headerImgs {
+  position: absolute;
+}
+
+#bound1 {
+  top: 200px;
+}
+
+#bound2 {
+  top: 290px;
+}
+
+.boundaryBar {
+  position: fixed;
+  height: 10px;
+  width: 100%;
+  background-color: black;
+}
+
+#content {
+  height: 2000px;
+  width: 100%;
 }
