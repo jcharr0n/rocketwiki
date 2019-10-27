@@ -1,52 +1,61 @@
 ;(function() {
   
   var
-    scrollInterval,
+    slideBar,
     scrollDirection,
     sliderImages = [],
-    scrollProgress = 0;
-
+    scrollInterval = 50,
+    spriteCount = 19,
+    spriteWidth = 40,
+    scrollProgress = 1;
   
   window.onload =
   function start(){
-    buildHome();
+    buildSlideBar();
   }
 
-  window.setInterval(scrollSlideBar, 100);
+  window.setInterval(scrollSlideBar, scrollInterval);
 
-  function buildHome()
+  function buildSlideBar()
   {
     // decide which way to scroll the slideBar
     scrollDirection = Math.floor(Math.random() * 2);
-    this.console.log("scroll direction: " + scrollDirection);
 
-    // start building the slideBar
-    var
-      imageQuantity = 19,
-      randomizedOrder = [],
-      slideBar = document.getElementById("slideBar");
+    // start populating the slideBar
+    var imageQuantity = Math.floor(window.outerWidth / 40) + 1;
+    var randomizedOrder = [];
+    slideBar = document.getElementById('slideBar');
 
-    // create an array of elements as big as the quantity that was predefined
+    // create an array as big as the quantity that was determined,
+    // but only assigns the source as a number from 1 to total num of sprites
     for (var i = 0; i < imageQuantity; i++)
     {
-      randomizedOrder.push(i + 1);
+      if (i < (spriteCount - 1))
+      {
+        randomizedOrder.push(i + 1);
+      }
+      else
+      {
+        randomizedOrder.push(Math.floor(Math.random() * spriteCount) + 1);
+      }
     }
+
     randomizedOrder = shuffle(randomizedOrder);
-    this.console.log(randomizedOrder);
-
-    // loop through the total number of images needed and 
-    for (var i = 0; i < imageQuantity; i++)
+    // format images and append to slideBar
+    for (var i = 0; i < randomizedOrder.length; i++)
     {
-      var slideImg = document.createElement("img");
-      slideImg.src = "media/images/ranksprites/" + randomizedOrder[i] + ".png";
-      slideImg.className = "sliderImgs";
-      // append the created image with a randomized source to the container div
+      var slideImg = document.createElement('img');
+      slideImg.src = 'media/images/ranksprites/' + randomizedOrder[i] + '.png';
+      slideImg.className = 'sliderImgs';
+      slideImg.style.position = 'absolute';
+      slideImg.style.left = i * spriteWidth + 'px';
       slideBar.appendChild(slideImg);
-      sliderImages.push(slideImg);
     }
+
+    sliderImages = document.getElementsByClassName('sliderImgs');
   }
   
-  // shuffle the image list array
+  // shuffle to randomize the order of the sprites
   function shuffle(array) {
     var currentIndex = array.length, tempValue, randIndex;
   
@@ -63,25 +72,29 @@
     return array;
   }
 
-  // scroll the images after a certain time interval, can go left or right
+  // scroll the images left or right, move them back when they go offscreen
   function scrollSlideBar(){
-    if (scrollDirection == 0)
+    for (var sliderImg of sliderImages)
     {
-      scrollProgress++;
+      var currentLeft = parseInt(sliderImg.style.left);
+      // right
+      if (scrollDirection == 0)
+      {
+        sliderImg.style.left = currentLeft + scrollProgress + 'px';
+        if (parseInt(sliderImg.style.left) > window.outerWidth)
+        {
+          sliderImg.style.left = 0 - spriteWidth + 'px';
+        }
+      }
+      // left
+      else if (scrollDirection == 1)
+      {
+        sliderImg.style.left = currentLeft - scrollProgress + 'px';
+        if (parseInt(sliderImg.style.left) < -spriteWidth)
+        {
+          sliderImg.style.left = window.outerWidth + 'px';
+        }
+      }
     }
-    else if (scrollDirection == 1)
-    {
-      scrollProgress--;
-    }
-    for (const sliderImg of sliderImages)
-    {
-      console.log(sliderImg);
-      var imageStyle = window.getComputedStyle(sliderImg); // resume here
-      var rightValue = imageStyle.getPropertyValue("right").replace("px", "");
-      sliderImg.style.right = rightValue + scrollProgress + "px";
-    }
-
-    //console.log("scroll pixels: " + scrollProgress);
-    //console.log("right: " + sliderImg.style.right);
   }
 })();

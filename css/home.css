@@ -11,20 +11,31 @@ body,html{
   position: fixed;
   height: 200px;
   width: 100%;
-  background-color: lightblue;
+  background-color: lightsteelblue;
+  text-align: center;
+}
+
+#title {
+  font-size: 24pt;
+  color: black;
+  margin: auto;
+  vertical-align: middle;
 }
 
 #slideBar {
   position: fixed;
-  height: 80px;
+  height: 40px;
   width: 100%;
   top: 210px;
   overflow: hidden;
   background-color: #5c5c5c;
 }
 
-.headerImgs {
+.sliderImgs {
   position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 0px;
 }
 
 #bound1 {
@@ -32,7 +43,7 @@ body,html{
 }
 
 #bound2 {
-  top: 290px;
+  top: 250px;
 }
 
 .boundaryBar {
@@ -43,6 +54,19 @@ body,html{
 }
 
 #content {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 260px;
   height: 2000px;
   width: 100%;
+}
+
+#navbar {
+  position: fixed;
+  background-color: #5c5c5c;
+  height: 100%;
+  width: 200px;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
 }
