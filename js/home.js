@@ -1,5 +1,5 @@
 ;(function() {
-  
+
   var
     slideBar,
     scrollDirection,
@@ -56,7 +56,8 @@
   }
   
   // shuffle to randomize the order of the sprites
-  function shuffle(array) {
+  function shuffle(array)
+  {
     var currentIndex = array.length, tempValue, randIndex;
   
     while (0 !== currentIndex) {
@@ -73,7 +74,8 @@
   }
 
   // scroll the images left or right, move them back when they go offscreen
-  function scrollSlideBar(){
+  function scrollSlideBar()
+  {
     for (var sliderImg of sliderImages)
     {
       var currentLeft = parseInt(sliderImg.style.left);
@@ -97,4 +99,28 @@
       }
     }
   }
+
+  // add onclick functionality for navbar butons,
+  // make app an SPA by inserting html into #content (or .entry) on click
+  // style active tab to have black background in the navbar, lightsteelblue text
+  // orange text on down click
+  // if clicked, assign navitem an id of "active" and iterate through all navitem
+  // elements. if their class is navitem and their id is not "active" assign them
+  // the original style class
+
+  // fix content entries so that they originate at the right border of the navbar,
+  // not at the left edge of the screen. add a "left: x px" style to it maybe
+
+  // use a wide pan image for title bar background banner, will give the page more
+  // character
+
+  // when hovering over a navbar item, slide out with css animation a further menu
+  // well, maybe a slide out. might look cleaner just to have it be instant on hover
+  // for example Item List -> Blueprints, Twitch Drops, RocketPass
+  // or          Item List -> Bodies, Wheels, Boosts, Trails
+  // will be a div whose width is set to 0 until its navbar item is hovered over,
+  // and it will have a left style of however many pixels the navbar is (+ margin)
+
+  // have drop down for item select, so you can select by crate series, by rarity,
+  // by season rewards, etc
 })();

@@ -1,0 +1,24 @@
+{
+  "name": "rocketwiki",
+  "version": "1.0.0",
+  "description": "a rocket league item catalogue and media sharing website. passion &amp; practice project for html/css/js/sql",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jcharr0n/rocketwiki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jcharr0n/rocketwiki/issues"
+  },
+  "homepage": "https://github.com/jcharr0n/rocketwiki#readme",
+  "dependencies": {
+    "mysql": "^2.17.1",
+    "requirejs": "^2.3.6"
+  }
+}
