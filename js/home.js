@@ -1,6 +1,7 @@
 ;(function() {
 
   var
+    initScreenWidth, // so that scrolling the rank sprites doesnt get messed up if screen resize
     slideBar,
     scrollDirection,
     sliderImages = [],
@@ -18,11 +19,13 @@
 
   function buildSlideBar()
   {
+    initScreenWidth = window.outerWidth;
+
     // decide which way to scroll the slideBar
     scrollDirection = Math.floor(Math.random() * 2);
 
     // start populating the slideBar
-    var imageQuantity = Math.floor(window.outerWidth / 40) + 1;
+    var imageQuantity = Math.floor(initScreenWidth / 40) + 1;
     var randomizedOrder = [];
     slideBar = document.getElementById('slideBar');
 
@@ -83,7 +86,7 @@
       if (scrollDirection == 0)
       {
         sliderImg.style.left = currentLeft + scrollProgress + 'px';
-        if (parseInt(sliderImg.style.left) > window.outerWidth)
+        if (parseInt(sliderImg.style.left) > initScreenWidth)
         {
           sliderImg.style.left = 0 - spriteWidth + 'px';
         }
@@ -94,7 +97,7 @@
         sliderImg.style.left = currentLeft - scrollProgress + 'px';
         if (parseInt(sliderImg.style.left) < -spriteWidth)
         {
-          sliderImg.style.left = window.outerWidth + 'px';
+          sliderImg.style.left = initScreenWidth + 'px';
         }
       }
     }
