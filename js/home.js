@@ -5,7 +5,7 @@
     slideBar,
     scrollDirection,
     sliderImages = [],
-    scrollInterval = 50,
+    scrollInterval = 35,
     spriteCount = 19,
     spriteWidth = 40,
     scrollProgress = 1;
@@ -19,7 +19,15 @@
 
   function buildSlideBar()
   {
-    initScreenWidth = window.outerWidth;
+    // base slidebar calculations on window width, get closest
+    // number divisible by the width of the sprites for even
+    // spacing throughout, and multiply by 5 to cover changes
+    // in window width after onload aka mobile dimensions to
+    // desktop dimensions
+    initScreenWidth = window.outerWidth * 5;
+    var temp = initScreenWidth / spriteWidth;
+    var temp2 = Math.trunc(temp);
+    initScreenWidth = temp2 * spriteWidth;
 
     // decide which way to scroll the slideBar
     scrollDirection = Math.floor(Math.random() * 2);
@@ -57,7 +65,7 @@
 
     sliderImages = document.getElementsByClassName('sliderImgs');
   }
-  
+
   // shuffle to randomize the order of the sprites
   function shuffle(array)
   {
