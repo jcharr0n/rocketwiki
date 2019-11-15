@@ -11,14 +11,16 @@
     "url": "git+https://github.com/jcharr0n/rocketwiki.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jackson Charron",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jcharr0n/rocketwiki/issues"
   },
   "homepage": "https://github.com/jcharr0n/rocketwiki#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "mysql": "^2.17.1",
     "requirejs": "^2.3.6"
-  }
+  },
+  "devDependencies": {}
 }

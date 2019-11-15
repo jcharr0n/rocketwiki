@@ -92,11 +92,6 @@ body,html{
   top: 210px;
   left: 210px;
   width: calc(100% - 210px);
-  /*
-  --if loading in a nonscrollable page--
-  height: calc(100% - 210px);
-  overflow: hidden;
-  */
   float: right;
   z-index: -1;
 }

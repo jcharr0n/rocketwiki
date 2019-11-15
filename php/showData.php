@@ -6,7 +6,7 @@ $password = "qQRq84cGJRSjbanJ";
 $database = "itemdb";
 $mysqli = new mysqli("localhost", $username, $password, $database);
 
-$query = "SELECT * FROM itemdb.main_item_list";
+$query = "SELECT * FROM itemdb.main_item_list ORDER BY name";
 echo "<b> <center>Database Output</center> </b> <br> <br>";
 
 // for displaying
