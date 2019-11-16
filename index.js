@@ -31,16 +31,22 @@ app.use('/', router);
 
 // pull data from a mysql query at the /query endpoint :)
 app.get('/query', function(req, res) {
+    
+    pool.query('SELECT * FROM itemdb.main_item_list WHERE rarity = ?', ['import'], function (error, rows, fields) {
+        if (error) throw error                          // how do i get this^ from the front end... hmmmm
 
-    pool.query('SELECT * FROM itemdb.main_item_list ORDER BY name', function (error, rows, fields) {
-        if (error) throw error
-
+        // send back html formatted response rather than json
+        var htmlContent = '<h1>Search Results:</h1>';
+        console.log('Search results:\n');
         // log the query result to the console, ie ubuntu terminal, selecting whatever data desired
-        console.log('Here is the name attribute of the first item: ' + rows[0].name);
+        for (var i = 0; i < rows.length; i++)
+        {
+            htmlContent += '<h2> ' + rows[i].name + '</h2><br>';
+            console.log(rows[i].name);
+        }
 
         // sends the query results to the UI
-        // can send html template here potentially
-        res.send(rows);
+        res.send(htmlContent);
     }); 
 });
 

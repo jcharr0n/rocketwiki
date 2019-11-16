@@ -119,7 +119,7 @@
             }
         }
         request.open("GET", url, true);
-        request.send(null);
+        request.send(request.responseText);
     }
 
   // add onclick functionality for navbar butons,
