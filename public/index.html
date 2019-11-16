@@ -26,14 +26,14 @@
   </div>
   <div id="viewport">
     <div class="entry">Add item to database
-        <form action="/" method="post">
+        <form>
             Name: <input type="text" name="name" /><br/>
             Category: <input type="text" name="category" /><br/>
             Rarity: <input type="text" name="rarity" /><br/>
             Obtain Method: <input type="text" name="obtain_method" /><br/>
             Debut Date: <input type="text" name="debut_date" /><br/>
             Hitbox: <input type="text" name="hitbox" /><br/>
-            <input type="submit"/>
+            <input type="submit" onclick="httpGetAsync()"/>
         </form>
     </div>
     <div class="entry">Sample page entry</div>
