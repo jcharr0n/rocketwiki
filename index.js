@@ -6,7 +6,7 @@ const path = require('path');
 // setup express app
 const app = express();
 const port = 4000;
-app.use(express.static('/public'));
+app.use(express.static(path.resolve('./public')));
 const router = express.Router();
 
 // my sql connection
