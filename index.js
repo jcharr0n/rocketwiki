@@ -32,8 +32,17 @@ app.use('/', router);
 // pull data from a mysql query at the /query endpoint :)
 app.get('/query', function(req, res) {
     
-    pool.query('SELECT * FROM itemdb.main_item_list WHERE rarity = ?', ['import'], function (error, rows, fields) {
-        if (error) throw error                          // how do i get this^ from the front end... hmmmm
+    // store request parameters to pass to query
+    var
+        name = req.query.name,
+        category = req.query.category,
+        rarity = req.query.rarity,
+        obtain_method = req.query.obtain_method,
+        hitbox = req.query.hitbox;
+
+    pool.query('SELECT * FROM itemdb.main_item_list WHERE name = ? OR category = ? OR rarity = ? OR obtain_method = ? OR hitbox = ?',
+                [name, category, rarity, obtain_method, hitbox] , function (error, rows, fields) {
+        if (error) throw error
 
         // send back html formatted response rather than json
         var htmlContent = '<h1>Search Results:</h1>';
