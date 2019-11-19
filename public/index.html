@@ -25,7 +25,7 @@
   </div>
   <div id="viewport">
     <div class="entry"> Search for an item:
-        <form action="/query" method="get">
+        <form action="#" method="get" onsubmit="httpGetAsync(); return false">
             Name: <input type="text" name="name" /><br/>
             Category: <input type="text" name="category" /><br/>
             Rarity: <input type="text" name="rarity" /><br/>
@@ -34,7 +34,7 @@
             <input type="submit"/>
         </form>
     </div>
-    <div class="entry">Sample page entry</div>
+    <div class="entry" id="append">Sample page entry</div>
     <div class="entry">Sample page entry</div>
     <div class="entry">Sample page entry</div>
   </div>

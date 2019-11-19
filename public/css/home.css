@@ -107,3 +107,10 @@ body,html{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
 }
+
+.responseItem {
+    width: 150px;
+    height: 150px;
+    color: aqua;
+    margin: auto;
+}

@@ -111,15 +111,22 @@
         }
     }
 
-    function httpGetAsync(url, callback) {
+    // handle the page setup when the query results are returned
+    window.httpGetAsync = function() {
         var request = new XMLHttpRequest();
+        request.responseType = 'json';
         request.onreadystatechange = function() {
             if (request.readyState == 4 & request.status == 200) {
-            callback(request.responseText);
+                // get the page element to append the items to
+                var parent = document.getElementById('append');
+                var div = document.createElement('DIV');
+                div.setAttribute('class', 'responseItem');
+                div.innerText = request.responseText; //responseArray[i].name;
+                parent.appendChild(div);
             }
         }
-        request.open("GET", url, true);
-        request.send(request.responseText);
+        request.open("GET", '/query?name=&category=&rarity=&obtain_method=&hitbox=', true);
+        request.send();
     }
 
   // add onclick functionality for navbar butons,
@@ -132,9 +139,6 @@
 
   // fix content entries so that they originate at the right border of the navbar,
   // not at the left edge of the screen. add a "left: x px" style to it maybe
-
-  // use a wide pan image for title bar background banner, will give the page more
-  // character
 
   // when hovering over a navbar item, slide out with css animation a further menu
   // well, maybe a slide out. might look cleaner just to have it be instant on hover
