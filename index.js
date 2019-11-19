@@ -23,11 +23,15 @@ const pool = mysql.createPool(config);
 // export the pool
 module.exports = pool;
 
-// setup the home page
+// setup pages
 router.get('/', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
+router.get('/directory', function (req, res) {
+    res.sendFile(path.join(__dirname + '/directory.html'));
+});
 app.use('/', router);
+app.use('/directory', router);
 
 // pull data from a mysql query at the /query endpoint :)
 app.get('/query', function(req, res) {

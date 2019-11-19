@@ -126,7 +126,8 @@
         request.responseType = 'text';
         request.onreadystatechange = function() {
             if (request.readyState == 4 & request.status == 200) {
-                // get the page element to append the items to
+                // when the request is returned, put it nicely in the page here!
+                // can also log the searched values here too. ie if values length was greater than 0, log it
                 var parent = document.getElementById('append');
                 var div = document.createElement('DIV');
                 div.setAttribute('class', 'responseItem');
