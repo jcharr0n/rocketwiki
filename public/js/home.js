@@ -113,8 +113,17 @@
 
     // handle the page setup when the query results are returned
     window.httpGetAsync = function() {
+
+        // test - grab values from the inputs and append them to the url
+        var
+            name = document.getElementById('name').value,
+            category =  document.getElementById('category').value,
+            rarity = document.getElementById('rarity').value,
+            obtain_method = document.getElementById('obtain_method').value,
+            hitbox = document.getElementById('hitbox').value;
+
         var request = new XMLHttpRequest();
-        request.responseType = 'json';
+        request.responseType = 'text';
         request.onreadystatechange = function() {
             if (request.readyState == 4 & request.status == 200) {
                 // get the page element to append the items to
@@ -125,7 +134,7 @@
                 parent.appendChild(div);
             }
         }
-        request.open("GET", '/query?name=&category=&rarity=&obtain_method=&hitbox=', true);
+        request.open("GET", '/query?name=' + name + '&category=' + category + '&rarity=' + rarity + '&obtain_method=' + obtain_method + '&hitbox=' + hitbox, true);
         request.send();
     }
 
