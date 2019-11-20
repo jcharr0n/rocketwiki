@@ -18,23 +18,61 @@
   <div id="slideBar"></div>
   <div id="bound2" class="boundaryBar"></div>
   <div id="navBar">
-    <div class="navItem">Home</div>
-    <div class="navItem">Item Directory</div>
-    <div class="navItem">Community</div>
-    <div class="navItem">About</div>
+    <div class="navItem"><a href="/">Home</a></div>
+    <div class="navItem currentPage"><a href="/directory">Item Directory</a></div>
+    <div class="navItem"><a href="/">Community</a></div>
+    <div class="navItem"><a href="/">About</a></div>
   </div>
   <div id="viewport">
-    <div class="entry"> Search for an item:
-        <form id="inputForm" action="#" method="get" onsubmit="httpGetAsync(); return false">
-            Name: <input type="text" id="name" name="name" /><br/>
-            Category: <input type="text" id="category" name="category" /><br/>
-            Rarity: <input type="text" id="rarity" name="rarity" /><br/>
-            Obtain Method: <input type="text" id="obtain_method" name="obtain_method" /><br/>
-            Hitbox: <input type="text" id="hitbox" name="hitbox" /><br/>
-            <input type="submit"/>
-        </form>
+    <div id="searchBar">
+        <div id="formContainer">
+            <form id="inputForm" action="#" method="get" onsubmit="httpGetAsync(); return false">
+                name <input type="text" id="name" name="name"/>
+                category <select id="category" name="category">
+                    <option value=""></option>
+                    <option value="antenna">antenna</option>
+                    <option value="body">body</option>
+                    <option value="decal">decal</option>
+                    <option value="goal explosion">goal explosion</option>
+                    <option value="boost">boost</option>
+                    <option value="trail">trail</option>
+                    <option value="topper">topper</option>
+                    <option value="engine sound">engine sound</option>
+                    <option value="banner">banner</option>
+                    <option value="title">title</option>
+                </select>
+                rarity <select id="rarity" name="rarity">
+                    <option value=""></option>
+                    <option value="common">common</option>
+                    <option value="uncommon">uncommon</option>
+                    <option value="rare">rare</option>
+                    <option value="very rare">very rare</option>
+                    <option value="import">import</option>
+                    <option value="exotic">exotic</option>
+                    <option value="limited">limited</option>
+                    <option value="premium">premium</option>
+                </select>
+                unlock method <select id="obtain_method" name="obtain_method">
+                    <option value=""></option>
+                    <option value="default">default</option>
+                    <option value="trade-up">trade-up</option>
+                    <option value="dlc">dlc</option>
+                    <option value="crate">crate</option>
+                    <option value="rocket pass">rocket pass</option>
+                </select>
+                hitbox <select id="hitbox" name="hitbox">
+                    <option value=""></option>
+                    <option value="breakout">breakout</option>
+                    <option value="dominus">dominus</option>
+                    <option value="hybrid">hybrid</option>
+                    <option value="octane">octane</option>
+                    <option value="plank">plank</option>
+                </select>
+                <input type="submit"/>
+            </form>
+        </div>
     </div>
-    <div class="entry" id="append">Results</div>
+    <div id="append"></div>
   </div>
 </body>
 </html>

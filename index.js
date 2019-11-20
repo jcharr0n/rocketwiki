@@ -44,7 +44,7 @@ app.get('/query', function(req, res) {
         obtain_method = req.query.obtain_method,
         hitbox = req.query.hitbox;
 
-    pool.query('SELECT * FROM itemdb.main_item_list WHERE name = ? OR category = ? OR rarity = ? OR obtain_method = ? OR hitbox = ?',
+    pool.query('SELECT * FROM itemdb.main_item_list WHERE name = ? OR category = ? OR rarity = ? OR obtain_method = ? OR hitbox = ? ORDER BY name',
                 [name, category, rarity, obtain_method, hitbox] , function (error, rows, fields) {
         if (error) throw error
 
