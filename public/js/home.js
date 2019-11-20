@@ -122,17 +122,31 @@
             obtain_method = document.getElementById('obtain_method').value,
             hitbox = document.getElementById('hitbox').value;
 
+        // remove previously created results on the dom
+        var previousResponse = document.getElementById('append');
+        previousResponse.parentNode.removeChild(previousResponse);
+
         var request = new XMLHttpRequest();
         request.responseType = 'text';
         request.onreadystatechange = function() {
             if (request.readyState == 4 & request.status == 200) {
-                // when the request is returned, put it nicely in the page here!
-                // can also log the searched values here too. ie if values length was greater than 0, log it
-                var parent = document.getElementById('append');
-                var div = document.createElement('DIV');
-                div.setAttribute('class', 'responseItem');
-                div.innerText = request.responseText; //responseArray[i].name;
-                parent.appendChild(div);
+                // when the request is returned, put it into the page
+                var newResponse = document.createElement('DIV');
+                var viewport = document.getElementById('viewport');
+                viewport.appendChild(newResponse);
+                newResponse.setAttribute('class', 'entry');
+                newResponse.setAttribute('id', 'append');               
+
+                // grab parent reference and then create the new elements
+                var parent = document.getElementById('append'),
+                    resultsArray = JSON.parse(request.responseText);
+                
+                for (var i = 0; i < resultsArray.length; i++) {
+                    var div = document.createElement('DIV');
+                    div.setAttribute('class', 'responseItem');
+                    div.innerText = resultsArray[i].name;
+                    parent.appendChild(div);
+                }
             }
         }
         request.open("GET", '/query?name=' + name + '&category=' + category + '&rarity=' + rarity + '&obtain_method=' + obtain_method + '&hitbox=' + hitbox, true);

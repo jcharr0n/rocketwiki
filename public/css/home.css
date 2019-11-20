@@ -108,9 +108,24 @@ body,html{
   font-size: 20px;
 }
 
-.responseItem {
-    width: 150px;
-    height: 150px;
-    color: aqua;
+#append {
     margin: auto;
+}
+
+.responseItem {
+    width: 146px;
+    float: left;
+    height: 146px;
+    color: aqua;
+    border: 2 px solid black;
+    overflow: hidden;
+    margin: auto;
+}
+
+#searchBar {
+    width: 100%;
+}
+
+#inputForm {
+    text-align: center;
 }
