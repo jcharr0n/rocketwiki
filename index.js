@@ -3,13 +3,13 @@ const express = require('express');
 const mysql = require('mysql');
 const path = require('path');
 
-// setup express app
+// express setup
 const app = express();
 const port = 4000;
 app.use(express.static(path.resolve('./public')));
 const router = express.Router();
 
-// my sql connection
+// mysql connection
 const config = {
   host: 'localhost',
   user: 'debian-sys-maint',
@@ -33,7 +33,7 @@ router.get('/directory', function (req, res) {
 app.use('/', router);
 app.use('/directory', router);
 
-// pull data from a mysql query at the /query endpoint :)
+// pull data from a mysql table at the /query endpoint
 app.get('/query', function(req, res) {
     
     // dynamically create query: only add populated fields to query string and param array
