@@ -52,8 +52,7 @@ app.get('/query', function(req, res) {
     passedParams.push(name, category, rarity, obtain_method, hitbox);
 
     for (var i = 0; i < passedParams.length; i++){
-        if(passedParams[i])
-        {
+        if(passedParams[i]) {
             // only add an AND if not the first new addition to the base query string
             if (queryString.length > 45) {
                 queryString += ' AND';
@@ -71,8 +70,7 @@ app.get('/query', function(req, res) {
         if (error) throw error
 
         console.log('Search results:'); // debug
-        for (var i = 0; i < rows.length; i++)
-        {
+        for (var i = 0; i < rows.length; i++) {
             console.log(rows[i].name);
         }
 

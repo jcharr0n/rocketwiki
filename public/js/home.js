@@ -26,36 +26,32 @@
         // in window width after onload aka mobile dimensions to
         // desktop dimensions
         initScreenWidth = window.outerWidth * 5;
-        var temp = initScreenWidth / spriteWidth;
-        var temp2 = Math.trunc(temp);
+        var temp = initScreenWidth / spriteWidth,
+            temp2 = Math.trunc(temp);
         initScreenWidth = temp2 * spriteWidth;
 
         // decide which way to scroll the slideBar
         scrollDirection = Math.floor(Math.random() * 2);
 
         // start populating the slideBar
-        var imageQuantity = Math.floor(initScreenWidth / 40) + 1;
-        var randomizedOrder = [];
+        var imageQuantity = Math.floor(initScreenWidth / 40) + 1,
+            randomizedOrder = [];
         slideBar = document.getElementById('slideBar');
 
         // create an array as big as the quantity that was determined,
         // but only assigns the source as a number from 1 to total num of sprites
         for (var i = 0; i < imageQuantity; i++) {
-            if (i < (spriteCount - 1))
-            {
+            if (i < (spriteCount - 1)) {
                 randomizedOrder.push(i + 1);
             }
-            else
-            {
+            else {
                 randomizedOrder.push(Math.floor(Math.random() * spriteCount) + 1);
             }
         }
-
         randomizedOrder = shuffle(randomizedOrder);
 
         // format images and append to slideBar
-        for (var i = 0; i < randomizedOrder.length; i++)
-        {
+        for (var i = 0; i < randomizedOrder.length; i++) {
             var slideImg = document.createElement('img');
             slideImg.src = 'media/images/ranksprites/' + randomizedOrder[i] + '.png';
             slideImg.className = 'sliderImgs';
@@ -63,7 +59,6 @@
             slideImg.style.left = i * spriteWidth + 'px';
             slideBar.appendChild(slideImg);
         }
-
         sliderImages = document.getElementsByClassName('sliderImgs');
     }
 
@@ -73,15 +68,13 @@
         var currentIndex = array.length, tempValue, randIndex;
     
         while (0 !== currentIndex) {
-    
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-    
-        tempValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = tempValue;
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+        
+            tempValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = tempValue;
         }
-    
         return array;
     }
 
@@ -91,21 +84,17 @@
         for (var sliderImg of sliderImages) {
             var currentLeft = parseInt(sliderImg.style.left);
             // right
-            if (scrollDirection == 0)
-            {
+            if (scrollDirection == 0) {
                 sliderImg.style.left = currentLeft + scrollProgress + 'px';
-                if (parseInt(sliderImg.style.left) > initScreenWidth)
-                {
-                sliderImg.style.left = 0 - spriteWidth + 'px';
+                if (parseInt(sliderImg.style.left) > initScreenWidth) {
+                    sliderImg.style.left = 0 - spriteWidth + 'px';
                 }
             }
             // left
-            else if (scrollDirection == 1)
-            {
+            else if (scrollDirection == 1) {
                 sliderImg.style.left = currentLeft - scrollProgress + 'px';
-                if (parseInt(sliderImg.style.left) < -spriteWidth)
-                {
-                sliderImg.style.left = initScreenWidth + 'px';
+                if (parseInt(sliderImg.style.left) < -spriteWidth) {
+                    sliderImg.style.left = initScreenWidth + 'px';
                 }
             }
         }
@@ -115,8 +104,7 @@
     window.httpGetAsync = function() {
 
         // grab values from the inputs, append them to the url, send off the request
-        var
-            name = document.getElementById('name').value,
+        var name = document.getElementById('name').value,
             category =  document.getElementById('category').value,
             rarity = document.getElementById('rarity').value,
             obtain_method = document.getElementById('obtain_method').value,
