@@ -36,33 +36,49 @@ app.use('/directory', router);
 // pull data from a mysql query at the /query endpoint :)
 app.get('/query', function(req, res) {
     
-    // store request parameters to pass to query
+    // dynamically create query: only add populated fields to query string and param array
     var
+        queryString = 'SELECT * FROM itemdb.main_item_list WHERE',
+        passedParams = [],
+        paramsToPass = [],
+        expectedParams = ['name', 'category', 'rarity', 'obtain_method', 'hitbox'],
+
         name = req.query.name,
         category = req.query.category,
         rarity = req.query.rarity,
         obtain_method = req.query.obtain_method,
         hitbox = req.query.hitbox;
 
-    pool.query('SELECT * FROM itemdb.main_item_list WHERE name = ? OR category = ? OR rarity = ? OR obtain_method = ? OR hitbox = ? ORDER BY name',
-                [name, category, rarity, obtain_method, hitbox] , function (error, rows, fields) {
+    passedParams.push(name, category, rarity, obtain_method, hitbox);
+
+    for (var i = 0; i < passedParams.length; i++){
+        if(passedParams[i])
+        {
+            // only add an AND if not the first new addition to the base query string
+            if (queryString.length > 45) {
+                queryString += ' AND';
+            }
+            queryString += ' ' + expectedParams[i] + ' = ?';
+            paramsToPass.push(passedParams[i]);
+        }
+    }
+
+    queryString += ';';
+    console.log('\n' + queryString);
+    console.log(paramsToPass); // debug
+
+    pool.query(queryString, paramsToPass, function (error, rows, fields) {
         if (error) throw error
 
-        console.log('Search results:\n');
-        // log the query result to the console, ie ubuntu terminal, selecting whatever data desired
+        console.log('Search results:'); // debug
         for (var i = 0; i < rows.length; i++)
         {
             console.log(rows[i].name);
         }
 
-        // sends the query results to the UI
+        // sends the query results to the client
         res.send(rows);
     }); 
-});
-
-// clicking the submit button on the page will send this post message
-app.post('/', function (req, res) {
-    res.send('Hello World Post!');
 });
 
 app.listen(port, () => console.log('Listening on port ' + port));

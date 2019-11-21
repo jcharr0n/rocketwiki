@@ -114,7 +114,7 @@
     // handle the page setup when the query results are returned
     window.httpGetAsync = function() {
 
-        // test - grab values from the inputs and append them to the url
+        // grab values from the inputs, append them to the url, send off the request
         var
             name = document.getElementById('name').value,
             category =  document.getElementById('category').value,
@@ -122,7 +122,7 @@
             obtain_method = document.getElementById('obtain_method').value,
             hitbox = document.getElementById('hitbox').value;
 
-        // remove previously created results on the dom
+        // remove previously created results
         var previousResponse = document.getElementById('append');
         previousResponse.parentNode.removeChild(previousResponse);
 
