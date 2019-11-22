@@ -114,6 +114,19 @@ a:visited {
     z-index: -1;
 }
 
+#searchBar {
+    position: fixed;
+    z-index: 1;
+    margin: auto;
+    color: rgb(255, 133, 0);
+    background-color: black;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100px;
+    overflow-y: auto
+}
+
 .entry {
     position: relative;
     width: 100%;
@@ -131,9 +144,9 @@ a:visited {
     margin: auto;
     overflow: auto;
     position: relative;
+    top: 100px;
     width: 100%;
     height: max-content;
-    border-top: 10px solid black;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
@@ -144,21 +157,10 @@ a:visited {
     float: left;
     height: 146px;
     color: black;
-    border: 2px solid black;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
     overflow: hidden;
     margin: auto;
-}
-
-#searchBar {
-    display: flex;
-    justify-content: center;
-    color: rgb(255, 133, 0);
-    background-color: black;
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    width: 100%;
-    height: 90px;
-    overflow-y: auto
 }
 
 input {
@@ -168,4 +170,5 @@ input {
 #formContainer {
     padding-top: 35px;
     height: 25px;
+    text-align: center;
 }

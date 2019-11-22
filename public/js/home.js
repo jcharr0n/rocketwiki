@@ -18,13 +18,10 @@
     // set interval for slider speed
     window.setInterval(scrollSlideBar, scrollInterval);
 
+    // creates the slidebar for the header of the page
     function buildSlideBar()
     {
-        // base slidebar calculations on window width, get closest
-        // number divisible by the width of the sprites for even
-        // spacing throughout, and multiply by 5 to cover changes
-        // in window width after onload aka mobile dimensions to
-        // desktop dimensions
+        // account for window size changing
         initScreenWidth = window.outerWidth * 5;
         var temp = initScreenWidth / spriteWidth,
             temp2 = Math.trunc(temp);
@@ -141,24 +138,13 @@
         request.send();
     }
 
-  // add onclick functionality for navbar butons,
-  // make app an SPA by inserting html into #content (or .entry) on click
-  // style active tab to have black background in the navbar, lightsteelblue text
-  // orange text on down click
-  // if clicked, assign navitem an id of "active" and iterate through all navitem
-  // elements. if their class is navitem and their id is not "active" assign them
-  // the original style class
+    // when hovering over a navbar item, slide out with css animation a further menu
+    // well, maybe a slide out. might look cleaner just to have it be instant on hover
+    // for example Item List -> Blueprints, Twitch Drops, RocketPass
+    // or          Item List -> Bodies, Wheels, Boosts, Trails
+    // will be a div whose width is set to 0 until its navbar item is hovered over,
+    // and it will have a left style of however many pixels the navbar is (+ margin)
 
-  // fix content entries so that they originate at the right border of the navbar,
-  // not at the left edge of the screen. add a "left: x px" style to it maybe
-
-  // when hovering over a navbar item, slide out with css animation a further menu
-  // well, maybe a slide out. might look cleaner just to have it be instant on hover
-  // for example Item List -> Blueprints, Twitch Drops, RocketPass
-  // or          Item List -> Bodies, Wheels, Boosts, Trails
-  // will be a div whose width is set to 0 until its navbar item is hovered over,
-  // and it will have a left style of however many pixels the navbar is (+ margin)
-
-  // have drop down for item select, so you can select by crate series, by rarity,
-  // by season rewards, etc
+    // have drop down for item select, so you can select by crate series, by rarity,
+    // by season rewards, etc
 })();

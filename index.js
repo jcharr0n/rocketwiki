@@ -37,8 +37,7 @@ app.use('/directory', router);
 app.get('/query', function(req, res) {
     
     // dynamically create query: only add populated fields to query string and param array
-    var
-        queryString = 'SELECT * FROM itemdb.main_item_list WHERE',
+    var queryString = 'SELECT * FROM itemdb.main_item_list WHERE',
         passedParams = [],
         paramsToPass = [],
         expectedParams = ['name', 'category', 'rarity', 'obtain_method', 'hitbox'],
@@ -62,7 +61,8 @@ app.get('/query', function(req, res) {
         }
     }
 
-    queryString += ';';
+    // TODO: make a "sort by" element visible on the page so the query can order by different columns
+    queryString += ' ORDER BY name;';
     console.log('\n' + queryString);
     console.log(paramsToPass); // debug
 
