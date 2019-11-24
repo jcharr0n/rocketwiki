@@ -149,7 +149,6 @@ a:visited {
     height: max-content;
     text-align: left;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
 }
 
 .responseItem {
@@ -157,10 +156,21 @@ a:visited {
     float: left;
     height: 146px;
     color: black;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
+    border: 5px solid white;
+    border-radius: 25px;
+    padding: 10px;
     overflow: hidden;
     margin: auto;
+    font-size: 20px;
+    text-align: center;
+    background: rgb(255, 133, 0);
+    transition: all .5s;
+}
+
+.responseItem:hover {
+    background: black;
+    color: white;
+    font-weight: bold;
 }
 
 input {

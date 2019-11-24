@@ -147,4 +147,7 @@
 
     // have drop down for item select, so you can select by crate series, by rarity,
     // by season rewards, etc
+
+    // create custom overlay for each rarity type with the color of the rarity in-game
+    // could also do with border colors/border styling, radius separate corners
 })();
