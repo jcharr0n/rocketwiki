@@ -159,16 +159,16 @@ a:visited {
     border: 5px solid white;
     border-radius: 25px;
     padding: 10px;
-    overflow: hidden;
     margin: auto;
-    font-size: 20px;
+    font-size: 0px;
     text-align: center;
     background: rgb(255, 133, 0);
-    transition: all .5s;
+    transition: background .5s;
 }
 
 .responseItem:hover {
     background: black;
+    font-size: 20px;
     color: white;
     font-weight: bold;
 }
