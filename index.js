@@ -37,7 +37,7 @@ app.use('/directory', router);
 app.get('/query', function(req, res) {
     
     // dynamically create query: only add populated fields to query string and param array
-    var queryString = 'SELECT name FROM itemdb.main_item_list WHERE',
+    var queryString = 'SELECT name, image, rarity FROM itemdb.main_item_list WHERE',
         passedParams = [],
         paramsToPass = [],
         expectedParams = ['name', 'category', 'rarity', 'obtain_method', 'hitbox'],
@@ -53,7 +53,7 @@ app.get('/query', function(req, res) {
     for (var i = 0; i < passedParams.length; i++){
         if(passedParams[i]) {
             // only add an AND if not the first new addition to the base query string
-            if (queryString.length > 45) {
+            if (queryString.length > 60) {
                 queryString += ' AND';
             }
             queryString += ' ' + expectedParams[i] + ' = ?';
