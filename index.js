@@ -34,7 +34,7 @@ app.use('/', router);
 app.use('/directory', router);
 
 // pull data from a mysql table at the /query endpoint
-app.get('/query', function(req, res) {
+app.get('/itemSearch', function(req, res) {
     
     // dynamically create query: only add populated fields to query string and param array
     var queryString = 'SELECT name, image, rarity FROM itemdb.main_item_list WHERE',
@@ -76,7 +76,7 @@ app.get('/query', function(req, res) {
 
         // sends the query results to the client
         res.send(rows);
-    }); 
+    });
 });
 
 app.listen(port, () => console.log('Listening on port ' + port));

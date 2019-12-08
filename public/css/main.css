@@ -158,23 +158,35 @@ a:visited {
     width: 146px;
     float: left;
     height: 146px;
+    line-height: 45px;
     color: black;
     border: 5px solid white;
     border-radius: 25px;
-    padding: 10px;
-    margin: auto;
-    font-size: 0px;
+    margin: 15px;
     text-align: center;
     background-position: center;
     background-size: cover;
-    margin-bottom: 10px;
-    margin-right: 10px;
 }
 
-.responseItem:hover {
-    font-size: 20px;
+.responseFader {
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: inherit;
     color: white;
     font-weight: bold;
+    line-height: inherit;
+    font-size: 20px;
+    height: inherit;
+    width: inherit;
+    position: relative;
+    background: rgb(0,0,0,0);
+}
+
+.responseFader:hover {
+    opacity: 1;
+    background: rgb(0,0,0,.75);
+    transition: all .25s;
 }
 
 input {

@@ -1,10 +1,9 @@
 ;(function() {
 
-    var
-        bodyThumbnailPath = 'media/images/items/bodies/';
+    var bodyThumbnailPath = 'media/images/items/bodies/';
 
     // handle the page setup when the query results are returned
-    window.httpGetAsync = function() {
+    window.itemSearch = function() {
 
         // grab values from the inputs, append them to the url, send off the request
         var name = document.getElementById('name').value,
@@ -12,6 +11,10 @@
             rarity = document.getElementById('rarity').value,
             obtain_method = document.getElementById('obtain_method').value,
             hitbox = document.getElementById('hitbox').value;
+
+        // only append values to the url that have data
+        // url base string and bool for tracking if first param or not
+        var url = filterUrl(name, category, rarity, obtain_method, hitbox);
 
         // remove previously created results
         var previousResponse = document.getElementById('append');
@@ -28,14 +31,13 @@
                 newResponse.setAttribute('class', 'entry');
                 newResponse.setAttribute('id', 'append');               
 
-                // grab parent reference and then create the new elements
+                // grab parent reference and convert response to json
                 var parent = document.getElementById('append'),
                     resultsArray = JSON.parse(request.responseText);
                 
                 for (var i = 0; i < resultsArray.length; i++) {
                     var div = document.createElement('DIV');
                     div.setAttribute('class', 'responseItem');
-                    div.innerText = resultsArray[i].name;
 
                     // put item image into the element as the background image
                     div.style.backgroundImage = 'url(' + bodyThumbnailPath + resultsArray[i].image + ')';
@@ -66,15 +68,66 @@
                             break;
                         case 'black market':
                             div.style.borderColor = 'darkpurple';
-
+                            break;
+                        default:
+                            div.style.borderColor = 'white';
+                            break;
                     }
 
                     parent.appendChild(div);
+
+                    // create fader for effect on hover
+                    var fader = document.createElement('DIV');
+                    fader.setAttribute('class', 'responseFader');
+                    fader.innerText = resultsArray[i].name;
+                    div.appendChild(fader);
                 }
             }
         }
-        request.open("GET", '/query?name=' + name + '&category=' + category + '&rarity=' + rarity + '&obtain_method=' + obtain_method + '&hitbox=' + hitbox, true);
+        request.open("GET", url, true);
         request.send();
+    }
+
+    filterUrl = function(name, category, rarity, obtain_method, hitbox) {
+        var url = '/itemSearch?',
+        paramTracker = true;
+        if (name.length > 0) {
+            if (paramTracker == false) {
+                url += '&';
+            }
+            url += 'name=' + name;
+            paramTracker = false;
+        }
+        if (category.length > 0) {
+            if (paramTracker == false) {
+                url += '&';
+            }
+            url += 'category=' + category;
+            paramTracker = false;
+        }
+        if (rarity.length > 0) {
+            if (paramTracker == false) {
+                url += '&';
+            }
+            url += 'rarity=' + rarity;
+            paramTracker = false;
+        }
+        if (obtain_method.length > 0) {
+            if (paramTracker == false) {
+                url += '&';
+            }
+            url += 'obtain_method=' + obtain_method;
+            paramTracker = false;
+        }
+        if (hitbox.length > 0) {
+            if (paramTracker == false) {
+                url += '&';
+            }
+            url += 'hitbox=' + hitbox;
+            paramTracker = false;
+        }
+
+        return url;
     }
 
 })();
