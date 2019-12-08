@@ -33,7 +33,7 @@ router.get('/directory', function (req, res) {
 app.use('/', router);
 app.use('/directory', router);
 
-// pull data from a mysql table at the /query endpoint
+// searching for items in the database
 app.get('/itemSearch', function(req, res) {
     
     // dynamically create query: only add populated fields to query string and param array
@@ -78,5 +78,7 @@ app.get('/itemSearch', function(req, res) {
         res.send(rows);
     });
 });
+
+// pull up an individual items info page
 
 app.listen(port, () => console.log('Listening on port ' + port));
