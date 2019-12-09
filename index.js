@@ -78,6 +78,9 @@ app.get('/itemSearch', function(req, res) {
     });
 });
 
-// pull up an individual items info page
+// next endpoint: pull up an individual items info page
+app.get('/itemProfile', function(req, res) {
+    res.end();
+});
 
 app.listen(port, () => console.log('Listening on port ' + port));

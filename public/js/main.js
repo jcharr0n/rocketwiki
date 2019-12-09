@@ -103,9 +103,6 @@
     // will be a div whose width is set to 0 until its navbar item is hovered over,
     // and it will have a left style of however many pixels the navbar is (+ margin)
 
-    // have drop down for item select, so you can select by crate series, by rarity,
-    // by season rewards, etc
-
     // create custom overlay for each rarity type with the color of the rarity in-game
     // could also do with border colors/border styling, radius separate corners
 })();
