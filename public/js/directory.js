@@ -28,12 +28,12 @@
                 var viewport = document.getElementById('viewport');
                 viewport.appendChild(newResponse);
                 newResponse.setAttribute('class', 'entry');
-                newResponse.setAttribute('id', 'append');               
+                newResponse.setAttribute('id', 'append');           
 
                 // grab parent reference and convert response to json
                 var parent = document.getElementById('append'),
                     resultsArray = JSON.parse(request.responseText);
-                
+
                 for (var i = 0; i < resultsArray.length; i++) {
                     var div = document.createElement('DIV');
                     div.setAttribute('class', 'responseItem');
