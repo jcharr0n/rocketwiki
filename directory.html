@@ -27,8 +27,7 @@
   <div id="viewport">
     <div id="searchBar">
         <div id="formContainer">
-            <form id="inputForm" action="#" method="get" onsubmit="itemSearch(); return false">
-                name <input type="text" id="name" name="name"/>
+            <form id="inputForm" action="#" method="get" onchange="itemSearch(); return false">
                 category <select id="category" name="category">
                     <option value=""></option>
                     <option value="antenna">antenna</option>
@@ -69,7 +68,6 @@
                     <option value="octane">octane</option>
                     <option value="plank">plank</option>
                 </select>
-                <input type="submit"/>
             </form>
         </div>
     </div>

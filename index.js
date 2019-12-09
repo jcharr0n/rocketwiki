@@ -38,19 +38,17 @@ app.get('/itemSearch', function(req, res) {
     
     // dynamically create query: only add populated fields to query string and param array
     var queryString = 'SELECT name, image, rarity FROM itemdb.main_item_list WHERE',
-        passedParams = [],
-        paramsToPass = [],
-        expectedParams = ['name', 'category', 'rarity', 'obtain_method', 'hitbox'],
+    passedParams = [],
+    paramsToPass = [],
+    expectedParams = ['category', 'rarity', 'obtain_method', 'hitbox'],
 
-        name = req.query.name,
-        category = req.query.category,
-        rarity = req.query.rarity,
-        obtain_method = req.query.obtain_method,
-        hitbox = req.query.hitbox;
+    category = req.query.category,
+    rarity = req.query.rarity,
+    obtain_method = req.query.obtain_method,
+    hitbox = req.query.hitbox;
 
-    passedParams.push(name, category, rarity, obtain_method, hitbox);
-
-    for (var i = 0; i < passedParams.length; i++){
+    passedParams.push(category, rarity, obtain_method, hitbox);
+    for (var i = 0; i < passedParams.length; i++) {
         if(passedParams[i]) {
             // only add an AND if not the first new addition to the base query string
             if (queryString.length > 60) {
@@ -60,11 +58,10 @@ app.get('/itemSearch', function(req, res) {
             paramsToPass.push(passedParams[i]);
         }
     }
-
-    // TODO: make a "sort by" element visible on the page so the query can order by different columns
+    
     queryString += ' ORDER BY name;';
     console.log('\n' + queryString);
-    console.log(paramsToPass); // debug
+    console.log(paramsToPass); // dev
 
     pool.query(queryString, paramsToPass, function (error, rows, fields) {
         if (error) throw error
