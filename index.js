@@ -48,14 +48,16 @@ app.get('/itemSearch', function(req, res) {
     hitbox = req.query.hitbox;
 
     passedParams.push(category, rarity, obtain_method, hitbox);
+    var firstParamSet = false;
     for (var i = 0; i < passedParams.length; i++) {
         if(passedParams[i]) {
             // only add an AND if not the first new addition to the base query string
-            if (queryString.length > 60) {
+            if (firstParamSet) {
                 queryString += ' AND';
             }
             queryString += ' ' + expectedParams[i] + ' = ?';
             paramsToPass.push(passedParams[i]);
+            firstParamSet = true;
         }
     }
     
