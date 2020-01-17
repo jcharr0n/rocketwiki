@@ -1,7 +1,6 @@
 ;(function() {
 
-    var
-        initScreenWidth, // so that scrolling the rank sprites doesnt get messed up if screen resize
+    var initScreenWidth, // so that scrolling the rank sprites doesnt get messed up if screen resize
         slideBar,
         scrollDirection,
         sliderImages = [],

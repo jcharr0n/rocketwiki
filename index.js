@@ -30,6 +30,7 @@ router.get('/', function (req, res) {
 router.get('/directory', function (req, res) {
     res.sendFile(path.join(__dirname + '/directory.html'));
 });
+
 app.use('/', router);
 app.use('/directory', router);
 
@@ -79,8 +80,20 @@ app.get('/itemSearch', function(req, res) {
 });
 
 // next endpoint: pull up an individual items info page
-app.get('/itemProfile', function(req, res) {
-    res.end();
+app.get('/directory/:itemName', function(req, res) {
+
+    var queryString = 'SELECT * FROM itemdb.main_item_list WHERE name = ?';
+    pool.query(queryString, req.params.itemName, function(error, rows) {
+        if (error) throw error 
+
+        console.log('Item details:');
+        for (var i = 0; i < rows.length; i++) {
+            console.log(rows[i]);
+        }
+
+        // send back results
+        res.send(rows);
+    });
 });
 
 app.listen(port, () => console.log('Listening on port ' + port));

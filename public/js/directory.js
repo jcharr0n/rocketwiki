@@ -20,11 +20,8 @@
             // only pass values to the query that have data
             var url = filterUrl(category, rarity, obtain_method, hitbox);
 
-            // remove previously created results if any
-            var previousResponse = document.getElementById('append');
-            if (previousResponse) {
-                previousResponse.parentNode.removeChild(previousResponse);
-            }
+            // remove any previously created results from the page
+            resetContentBox();
 
             var request = new XMLHttpRequest();
             request.responseType = 'text';
@@ -67,7 +64,31 @@
         }
     }
 
-    // helper to determine if at least one request param was given
+    document.onclick = function(e) {
+        if (e.target.getAttribute("class") == 'responseFader') {
+            itemProfile(e.target.innerText);
+        }
+    }
+
+    // load the information for a specified item upon clicking its thumbnail
+    itemProfile = function(name) {
+        var url = 'directory/' + name;
+        request = new XMLHttpRequest();
+        request.responseType = 'text';
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 & request.status == 200) {
+                // wipe parent div
+                console.log('request received');
+                // resetContentBox();
+
+                // prepare item profile html here
+            }
+        }
+        request.open("GET", url, true);
+        request.send();
+    }
+
+    // determine if at least one request param was given
     checkForParams = function(params) {
         var populated = false;
         for (var i = 0; i < params.length; i++) {
@@ -152,4 +173,10 @@
         return url;
     }
 
+    resetContentBox = function() {
+        var previousResponse = document.getElementById('append');
+        if (previousResponse) {
+            previousResponse.parentNode.removeChild(previousResponse);
+        }
+    }
 })();
