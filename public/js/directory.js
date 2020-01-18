@@ -1,16 +1,16 @@
 ;(function() {
 
     var bodyThumbnailPath = 'media/images/items/bodies/';
+    
+    $(function() {
+        loadHtmlTemplate('#searchBarTemplate', '#viewport');
+    });
 
     document.onclick = function(e) {
         if (e.target.getAttribute("class") == 'responseFader') {
             itemProfile(e.target.innerText);
         }
     }
-
-    $(function() {
-        loadHtmlTemplate('#searchBarTemplate', '#viewport');
-    });
 
     // handle the page setup when the query results are returned
     window.itemSearch = function() {
@@ -81,10 +81,10 @@
         request.responseType = 'text';
         request.onreadystatechange = function() {
             if (request.readyState == 4 & request.status == 200) {
-                // wipe parent div
                 console.log('request received');
                 // reset content box including removing the search bar. will need to add it back in when going back to the search page
                 emptyElementById('#viewport');
+
                 // load item profile html template here
                 // call helper to insert response data into the template at certain points
             }
