@@ -1,13 +1,13 @@
 ;(function() {
 
     var initScreenWidth, // so that scrolling the rank sprites doesnt get messed up if screen resize
-        slideBar,
-        scrollDirection,
-        sliderImages = [],
-        scrollInterval = 35,
-        spriteCount = 19,
-        spriteWidth = 40,
-        scrollProgress = 1;
+    slideBar,
+    scrollDirection,
+    sliderImages = [],
+    scrollInterval = 35,
+    spriteCount = 19,
+    spriteWidth = 40,
+    scrollProgress = 1;
 
     window.onload = function start(){
         buildSlideBar();

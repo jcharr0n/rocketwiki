@@ -2,6 +2,16 @@
 
     var bodyThumbnailPath = 'media/images/items/bodies/';
 
+    document.onclick = function(e) {
+        if (e.target.getAttribute("class") == 'responseFader') {
+            itemProfile(e.target.innerText);
+        }
+    }
+
+    $(function() {
+        loadHtmlTemplate('#searchBarTemplate', '#viewport');
+    });
+
     // handle the page setup when the query results are returned
     window.itemSearch = function() {
 
@@ -21,7 +31,7 @@
             var url = filterUrl(category, rarity, obtain_method, hitbox);
 
             // remove any previously created results from the page
-            resetContentBox();
+            emptyElementById('#append');
 
             var request = new XMLHttpRequest();
             request.responseType = 'text';
@@ -29,14 +39,14 @@
                 if (request.readyState == 4 & request.status == 200) {
                     // when the request is returned, put it into the page
                     var newResponse = document.createElement('DIV');
+                    newResponse.setAttribute('class', 'entry');
+                    newResponse.setAttribute('id', 'append');
                     var viewport = document.getElementById('viewport');
                     viewport.appendChild(newResponse);
-                    newResponse.setAttribute('class', 'entry');
-                    newResponse.setAttribute('id', 'append');           
-
+                    
                     // grab parent reference and convert response to json
                     var parent = document.getElementById('append'),
-                        resultsArray = JSON.parse(request.responseText);
+                    resultsArray = JSON.parse(request.responseText);
 
                     for (var i = 0; i < resultsArray.length; i++) {
                         var div = document.createElement('DIV');
@@ -64,12 +74,6 @@
         }
     }
 
-    document.onclick = function(e) {
-        if (e.target.getAttribute("class") == 'responseFader') {
-            itemProfile(e.target.innerText);
-        }
-    }
-
     // load the information for a specified item upon clicking its thumbnail
     itemProfile = function(name) {
         var url = 'directory/' + name;
@@ -79,9 +83,10 @@
             if (request.readyState == 4 & request.status == 200) {
                 // wipe parent div
                 console.log('request received');
-                // resetContentBox();
-
-                // prepare item profile html here
+                // reset content box including removing the search bar. will need to add it back in when going back to the search page
+                emptyElementById('#viewport');
+                // load item profile html template here
+                // call helper to insert response data into the template at certain points
             }
         }
         request.open("GET", url, true);
@@ -173,10 +178,14 @@
         return url;
     }
 
-    resetContentBox = function() {
-        var previousResponse = document.getElementById('append');
-        if (previousResponse) {
-            previousResponse.parentNode.removeChild(previousResponse);
-        }
+    emptyElementById = function(id) {
+        $(id).empty();
+        console.log('item emptied');
+    }
+
+    loadHtmlTemplate = function(templateId, parentId) {
+        var html = $(templateId).html();
+        $(parentId).prepend(html);
+        console.log('template loaded');
     }
 })();

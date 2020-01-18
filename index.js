@@ -11,10 +11,10 @@ const router = express.Router();
 
 // mysql connection
 const config = {
-  host: 'localhost',
-  user: 'debian-sys-maint',
-  password: 'qQRq84cGJRSjbanJ',
-  database: 'itemdb'
+    host: 'localhost',
+    user: 'debian-sys-maint',
+    password: 'qQRq84cGJRSjbanJ',
+    database: 'itemdb'
 };
 
 // create the pool for mysql db
