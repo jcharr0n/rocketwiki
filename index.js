@@ -34,7 +34,7 @@ router.get('/directory', function (req, res) {
 app.use('/', router);
 app.use('/directory', router);
 
-// searching for items in the database
+// endpoint 01: query database for a list of items matching the selected criteria
 app.get('/itemSearch', function(req, res) {
     
     // dynamically create query: only add populated fields to query string and param array
@@ -79,7 +79,7 @@ app.get('/itemSearch', function(req, res) {
     });
 });
 
-// next endpoint: pull up an individual items info page
+// endpoint 02: view a selected items full details (note: not yet distinct for dupe names)
 app.get('/directory/:itemName', function(req, res) {
 
     var queryString = 'SELECT * FROM itemdb.main_item_list WHERE name = ?';

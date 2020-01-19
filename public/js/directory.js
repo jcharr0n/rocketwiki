@@ -1,7 +1,7 @@
 ;(function() {
 
     var bodyThumbnailPath = 'media/images/items/bodies/';
-    
+
     $(function() {
         loadHtmlTemplate('#searchBarTemplate', '#viewport');
     });
@@ -31,21 +31,22 @@
             var url = filterUrl(category, rarity, obtain_method, hitbox);
 
             // remove any previously created results from the page
-            emptyElementById('#append');
+            removeElementById('#results');
 
             var request = new XMLHttpRequest();
             request.responseType = 'text';
             request.onreadystatechange = function() {
                 if (request.readyState == 4 & request.status == 200) {
                     // when the request is returned, put it into the page
+                    // replace this with loaded template
                     var newResponse = document.createElement('DIV');
                     newResponse.setAttribute('class', 'entry');
-                    newResponse.setAttribute('id', 'append');
+                    newResponse.setAttribute('id', 'results');
                     var viewport = document.getElementById('viewport');
                     viewport.appendChild(newResponse);
                     
                     // grab parent reference and convert response to json
-                    var parent = document.getElementById('append'),
+                    var parent = document.getElementById('results'),
                     resultsArray = JSON.parse(request.responseText);
 
                     for (var i = 0; i < resultsArray.length; i++) {
@@ -83,7 +84,7 @@
             if (request.readyState == 4 & request.status == 200) {
                 console.log('request received');
                 // reset content box including removing the search bar. will need to add it back in when going back to the search page
-                emptyElementById('#viewport');
+                toggleElementById('#results');
 
                 // load item profile html template here
                 // call helper to insert response data into the template at certain points
@@ -181,6 +182,16 @@
     emptyElementById = function(id) {
         $(id).empty();
         console.log('item emptied');
+    }
+
+    removeElementById = function(id) {
+        $(id).remove();
+        console.log('item removed');
+    }
+
+    toggleElementById = function(id) {
+        $(id).toggle();
+        console.log('switch flipped');
     }
 
     loadHtmlTemplate = function(templateId, parentId) {
