@@ -22,7 +22,7 @@
         // account for window size changing
         initScreenWidth = window.outerWidth * 5;
         var temp = initScreenWidth / spriteWidth,
-        temp2 = Math.trunc(temp),
+            temp2 = Math.trunc(temp);
         initScreenWidth = temp2 * spriteWidth;
 
         // decide which way to scroll the slideBar
@@ -30,7 +30,7 @@
 
         // start populating the slideBar
         var imageQuantity = Math.floor(initScreenWidth / 40) + 1,
-        randomizedOrder = [];
+            randomizedOrder = [];
         slideBar = document.getElementById('slideBar');
 
         // create an array as big as the quantity that was determined,
@@ -60,7 +60,8 @@
     // shuffle to randomize the order of the sprites
     function shuffle(array)
     {
-        var currentIndex = array.length, tempValue;
+        var currentIndex = array.length, tempValue, randIndex;
+    
         while (0 !== currentIndex) {
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;

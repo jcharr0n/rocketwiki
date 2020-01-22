@@ -5,7 +5,7 @@ body {
     height: max-content;
 }
 
-body,html{
+body, html{
     margin: 0;
     padding: 0;
 }
@@ -71,10 +71,10 @@ a:visited {
 
 .currentPage {
     background-color: black !important;
-}
 
-.currentPage a {
-    color: lightsteelblue;
+    a {
+        color: lightsteelblue;
+    }
 }
 
 #navBar {
@@ -95,18 +95,18 @@ a:visited {
     line-height: 50px;
     text-align: center;
     font-weight: bold;
-}
 
-.navItem:hover {
-    background-color: black;
-}
+    :hover {
+        background-color: black;
 
-.navItem:hover a {
-    color: lightsteelblue !important;
-}
+        a {
+            color: lightsteelblue !important;
+        }
+    }
 
-.navItem:focus {
-    color: orange;
+    :focus {
+        color: orange;
+    }
 }
 
 #viewport {
@@ -197,4 +197,13 @@ input {
     padding-top: 35px;
     height: 25px;
     text-align: center;
+}
+
+#itemProfile {
+    width: 100%;
+    background-color: white;
+
+    h2 {
+        font-size: 12pt;
+    }
 }

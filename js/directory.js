@@ -85,14 +85,13 @@
                 console.log('request received');
                 // reset content box including removing the search bar. will need to add it back in when going back to the search page
                 toggleElementById('#results');
-                toggleElementById('#searchBar');
 
                 // discard any previously generated item profile
                 removeElementById('#itemProfile');
 
                 // item profile html template here
                 loadHtmlTemplate('#itemProfileTemplate', '#viewport', false);
-
+                
                 // call helper to insert response data into the template at certain points
             }
         }

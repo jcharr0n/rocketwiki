@@ -2,43 +2,30 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-
-  <title>Rocket Wiki</title>
-  <meta name="author" content="Jackson Charron">
-  <link rel='shortcut icon' href='media/images/favicon.ico' type='image/x-icon'>
-  <link rel="text/css" href="css/home.css">
-
+    <meta charset="utf-8">
+    <title>Rocket Wiki</title>
+    <meta name="author" content="Jackson Charron">
+    <link rel='shortcut icon' href='/media/images/favicon.ico' type='image/x-icon'>
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
-  <script src="js/home.js"></script>
-
-  <div id="titleBar"></div>
-  <div id="bound1" class="boundaryBar"></div>
-  <div id="slideBar"></div>
-  <div id="bound2" class="boundaryBar"></div>
-  <div id="navBar">
-    <div class="navItem">Home</div>
-    <div class="navItem">Item List</div>
-    <div class="navItem">Community</div>
-    <div class="navItem">About</div>
-  </div>
-  <div id="viewport">
-    <div class="entry">Add item to database
-        <form action="/" method="post">
-            Name: <input type="text" name="name" /><br/>
-            Category: <input type="text" name="category" /><br/>
-            Rarity: <input type="text" name="rarity" /><br/>
-            Obtain Method: <input type="text" name="obtain_method" /><br/>
-            Debut Date: <input type="text" name="debut_date" /><br/>
-            Hitbox: <input type="text" name="hitbox" /><br/>
-            <input type="submit"/>
-        </form>
+    <script src="/js/main.js"></script>
+    <div id="titleBar"></div>
+    <div id="bound1" class="boundaryBar"></div>
+    <div id="slideBar"></div>
+    <div id="bound2" class="boundaryBar"></div>
+    <div id="navBar">
+        <div class="navItem currentPage"><a href="/">Home</a></div>
+        <div class="navItem"><a href="/directory">Item Directory</a></div>
+        <div class="navItem"><a href="/">Community</a></div>
+        <div class="navItem"><a href="/">About</a></div>
     </div>
-    <div class="entry">Sample page entry</div>
-    <div class="entry">Sample page entry</div>
-    <div class="entry">Sample page entry</div>
-  </div>
+    <div id="viewport">
+        <div class="entry">Sample page entry</div>
+        <div class="entry">Sample page entry</div>
+        <div class="entry">Sample page entry</div>
+    </div>
 </body>
 </html>

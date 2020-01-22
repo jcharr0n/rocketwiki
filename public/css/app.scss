@@ -1,0 +1,203 @@
+body {
+    background-color: black;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    height: max-content;
+}
+
+body, html{
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: custom;
+    src: url(../media/fonts/tex.ttf);
+}
+
+#titleBar {
+    position: fixed;
+    height: 150px;
+    width: 100%;
+    background-image: url('../media/images/misc/collision.png');
+    background-attachment: fixed;
+    background-position-y: -500px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30pt;
+    color: black;
+    margin: auto;
+    line-height: 150px;
+}
+
+#slideBar {
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    top: 160px;
+    overflow: hidden;
+    background-color: #5c5c5c;
+}
+
+.sliderImgs {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: 0px;
+}
+
+#bound1 {
+    top: 150px;
+}
+
+#bound2 {
+    top: 200px;
+}
+
+.boundaryBar {
+    position: fixed;
+    height: 10px;
+    width: 100%;
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+    &:visited {
+        color: black;
+    }
+}
+
+.currentPage {
+    background-color: black !important;
+    a {
+        color: lightsteelblue;
+    }
+}
+
+#navBar {
+    position: fixed;
+    background-color: #5c5c5c;
+    border-right: 10px solid black;
+    height: 100%;
+    width: 200px;
+    top: 210px;
+}
+
+.navItem {
+    width: 190;
+    height: 50px;
+    background-color: #5c5c5c;
+    color: black;
+    margin: auto;
+    line-height: 50px;
+    text-align: center;
+    font-weight: bold;
+    &:hover {
+        background-color: black;
+
+        a {
+            color: lightsteelblue !important;
+        }
+    }
+    &:focus {
+        color: orange;
+    }
+}
+
+#viewport {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 210px;
+    left: 210px;
+    width: calc(100% - 210px);
+    float: right;
+    z-index: -1;
+}
+
+#searchBar {
+    position: fixed;
+    z-index: 1;
+    margin: auto;
+    color: rgb(255, 133, 0);
+    background-color: black;
+    font-size: 20px;
+    width: 100%;
+    height: 100px;
+    overflow-y: auto
+}
+
+.entry {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    border-bottom: 10px solid black;
+    text-align: left;
+    margin: auto;
+    font-size: 20px;
+}
+
+#results {
+    margin-top: 10px;
+    margin: auto;
+    overflow: auto;
+    position: relative;
+    top: 100px;
+    width: 100%;
+    height: max-content;
+    text-align: left;
+    
+}
+
+.responseItem {
+    width: 146px;
+    float: left;
+    height: 146px;
+    line-height: 45px;
+    color: black;
+    border: 5px solid white;
+    border-radius: 25px;
+    margin: 15px;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+}
+
+.responseFader {
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    border-radius: inherit;
+    color: white;
+    font-weight: bold;
+    line-height: inherit;
+    font-size: 20px;
+    height: inherit;
+    width: inherit;
+    position: relative;
+    background: rgb(0,0,0,0);
+    &:hover {
+        opacity: 1;
+        background: rgb(0,0,0,.75);
+        transition: all .25s;
+    }
+}
+
+input {
+    margin-right: 10px;
+}
+
+#formContainer {
+    padding-top: 35px;
+    height: 25px;
+    text-align: center;
+}
+
+#itemProfile {
+    width: 100%;
+    background-color: white;
+    h2 {
+        font-size: 12pt;
+    }
+}
