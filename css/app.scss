@@ -63,15 +63,13 @@ body, html{
 
 a {
     text-decoration: none;
-}
-
-a:visited {
-    color: black;
+    &:visited {
+        color: black;
+    }
 }
 
 .currentPage {
     background-color: black !important;
-
     a {
         color: lightsteelblue;
     }
@@ -95,16 +93,14 @@ a:visited {
     line-height: 50px;
     text-align: center;
     font-weight: bold;
-
-    :hover {
+    &:hover {
         background-color: black;
 
         a {
             color: lightsteelblue !important;
         }
     }
-
-    :focus {
+    &:focus {
         color: orange;
     }
 }
@@ -181,12 +177,11 @@ a:visited {
     width: inherit;
     position: relative;
     background: rgb(0,0,0,0);
-}
-
-.responseFader:hover {
-    opacity: 1;
-    background: rgb(0,0,0,.75);
-    transition: all .25s;
+    &:hover {
+        opacity: 1;
+        background: rgb(0,0,0,.75);
+        transition: all .25s;
+    }
 }
 
 input {
@@ -202,7 +197,6 @@ input {
 #itemProfile {
     width: 100%;
     background-color: white;
-
     h2 {
         font-size: 12pt;
     }
