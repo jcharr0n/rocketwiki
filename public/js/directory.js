@@ -3,12 +3,17 @@
     var bodyThumbnailPath = 'media/images/items/bodies/';
 
     $(function() {
-        loadHtmlTemplate('#searchBarTemplate', '#viewport', true);
+        $('#itemProfile').hide();
     });
 
     document.onclick = function(e) {
         if (e.target.getAttribute("class") == 'responseFader') {
             itemProfile(e.target.innerText);
+        }
+        if (e.target.getAttribute("id") == 'back') {
+            $('#itemProfile').hide();
+            $('#searchBar').show();
+            $('#results').show();
         }
     }
 
@@ -31,7 +36,7 @@
             var url = filterUrl(category, rarity, obtain_method, hitbox);
 
             // remove any previously created results from the page
-            removeElementById('#results');
+            $('#results').remove();
 
             var request = new XMLHttpRequest();
             request.responseType = 'text';
@@ -84,16 +89,14 @@
             if (request.readyState == 4 & request.status == 200) {
                 console.log('request received');
                 // reset content box including removing the search bar. will need to add it back in when going back to the search page
-                toggleElementById('#results');
-                toggleElementById('#searchBar');
+                $('#results').hide();
+                $('#searchBar').hide();
 
-                // discard any previously generated item profile
-                removeElementById('#itemProfile');
+                // swap in new values to the item profiles elements here
+                // call helper to insert response data at certain points
 
-                // item profile html template here
-                loadHtmlTemplate('#itemProfileTemplate', '#viewport', false);
-
-                // call helper to insert response data into the template at certain points
+                // show the item profile
+                $('#itemProfile').show();
             }
         }
         request.open("GET", url, true);
@@ -185,21 +188,7 @@
         return url;
     }
 
-    emptyElementById = function(id) {
-        $(id).empty();
-        console.log('item emptied');
-    }
-
-    removeElementById = function(id) {
-        $(id).remove();
-        console.log('item removed');
-    }
-
-    toggleElementById = function(id) {
-        $(id).toggle();
-        console.log('switch flipped');
-    }
-
+    /*
     loadHtmlTemplate = function(templateId, parentId, position) {
         var html = $(templateId).html();
         if (position == true) {
@@ -210,4 +199,5 @@
         }
         console.log('template loaded');
     }
+    */
 })();
