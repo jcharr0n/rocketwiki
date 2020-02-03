@@ -11,6 +11,7 @@
             itemProfile(e.target.innerText);
         }
         if (e.target.getAttribute("id") == 'back') {
+            //$('#back').hide();
             $('#itemProfile').hide();
             $('#searchBar').show();
             $('#results').show();
@@ -43,12 +44,7 @@
             request.onreadystatechange = function() {
                 if (request.readyState == 4 & request.status == 200) {
                     // when the request is returned, put it into the page
-                    // replace this with loaded template
-                    var newResponse = document.createElement('DIV');
-                    newResponse.setAttribute('class', 'entry');
-                    newResponse.setAttribute('id', 'results');
-                    var viewport = document.getElementById('viewport');
-                    viewport.appendChild(newResponse);
+                    $('#viewport').append('<div class="entry" id="results"></div>');
                     
                     // grab parent reference and convert response to json
                     var parent = document.getElementById('results'),
@@ -87,13 +83,13 @@
         request.responseType = 'text';
         request.onreadystatechange = function() {
             if (request.readyState == 4 & request.status == 200) {
-                console.log('request received');
                 // reset content box including removing the search bar. will need to add it back in when going back to the search page
                 $('#results').hide();
                 $('#searchBar').hide();
 
-                // swap in new values to the item profiles elements here
-                // call helper to insert response data at certain points
+                // call helper to inject response data into profile template
+                results = JSON.parse(request.responseText);
+                itemDetailInjection(results);
 
                 // show the item profile
                 $('#itemProfile').show();
@@ -188,16 +184,12 @@
         return url;
     }
 
-    /*
-    loadHtmlTemplate = function(templateId, parentId, position) {
-        var html = $(templateId).html();
-        if (position == true) {
-            $(parentId).prepend(html);
-        }
-        else {
-            $(parentId).append(html);
-        }
-        console.log('template loaded');
+    itemDetailInjection = function(info) {
+        $('#thumbnail').css('background-image', 'url(' + bodyThumbnailPath + info[0].image + ')');
+        $('#itemName').text(info[0].name);
+        $('#itemType').text(info[0].category);
+        $('#itemRarity').text(info[0].rarity);
+        $('#itemHitbox').text(info[0].hitbox); // add conditional for when item is not a body
     }
-    */
+
 })();

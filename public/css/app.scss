@@ -22,12 +22,7 @@ body, html{
     background-image: url('../media/images/misc/collision.png');
     background-attachment: fixed;
     background-position-y: -500px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 30pt;
-    color: black;
     margin: auto;
-    line-height: 150px;
 }
 
 #slideBar {
@@ -120,21 +115,29 @@ a {
     position: fixed;
     z-index: 1;
     margin: auto;
+    text-align: center;
     color: rgb(255, 133, 0);
     background-color: black;
-    font-size: 20px;
     width: 100%;
-    height: 50px;
+    height: 75px;
     overflow-y: auto;
+    label {
+        font-size: 20px;
+        font-weight: bold;
+    }
 }
 
 .searchSelect {
-    border: 2px solid lightsteelblue;
-    border-radius: 2px;
+    border: 5px solid rgb(255, 133, 0);
+    border-radius: 5px;
     display: inline-block;
     padding: .6em 1.4em .5em .8em;
 	box-sizing: border-box;
-	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    margin: 10px 75px 10px 5px;
+    &:hover {
+        border-color: lightsteelblue;
+    }
 }
 
 .entry {
@@ -151,18 +154,17 @@ a {
     margin: auto;
     overflow: auto;
     position: relative;
-    top: 100px;
-    width: 100%;
+    width: calc(100% - 15px);
     height: max-content;
     text-align: left;
-    
+    margin-left: 15px;
 }
 
 .responseItem {
     width: 146px;
-    float: left;
     height: 146px;
     line-height: 45px;
+    float: left;
     color: black;
     border: 5px solid white;
     border-radius: 25px;
@@ -192,25 +194,55 @@ a {
     }
 }
 
-#formContainer {
-    padding-top: 5px;
-    height: 25px;
-    text-align: center;
-}
-
-#itemProfile {
-    width: 100%;
-    background-color: lightsteelblue;
-    h2 {
-        font-size: 12pt;
-    }
-}
-
 #back {
     background-color: rgb(255, 133, 0);
     width: 100px;
     height: 50px;
+    border: 5px solid lightsteelblue;
+    border-radius: 25px;
+    font-size: 15px;
     font-weight: bold;
     margin-top: 20px;
     margin-left: 20px;
+}
+
+#itemProfile {
+    margin: auto;
+    width: 240px;
+    border: 5px solid lightsteelblue;
+    border-radius: 25px;
+    background-color: rgb(255, 133, 0);
+    height: max-content;
+}
+
+#thumbnail {
+    display: inline-block;
+    width: 240px;
+    height: 240px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom: 5px solid lightsteelblue;
+    background-size: cover;
+    background-position: center;
+}
+
+#profileDetails {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    div {
+        display: inline-block;
+        height: 50px;
+        font-size: 15px;
+        line-height: 50px;
+    }
+}
+
+.labels {
+    width: 80px;
+    border-right: 2px solid black;
+}
+
+.details {
+    width: 158px;
 }
