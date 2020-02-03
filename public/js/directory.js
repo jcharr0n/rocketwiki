@@ -11,7 +11,6 @@
             itemProfile(e.target.innerText);
         }
         if (e.target.getAttribute("id") == 'back') {
-            $('#back').hide();
             $('#itemProfile').hide();
             $('#searchBar').show();
             $('#results').show();
