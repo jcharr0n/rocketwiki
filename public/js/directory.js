@@ -8,8 +8,12 @@
     });
 
     document.onclick = function(e) {
+        // account for if user clicked on either name or thumbnail
         if (e.target.getAttribute("class") == 'responseItem') {
             itemProfile(e.target.querySelector('.responseFader').innerText);
+        }
+        if (e.target.getAttribute("class") == 'responseFader') {
+            itemProfile(e.target.innerText);
         }
         if (e.target.getAttribute("id") == 'back') {
             $('#back').hide();
@@ -86,7 +90,7 @@
         request.responseType = 'text';
         request.onreadystatechange = function() {
             if (request.readyState == 4 & request.status == 200) {
-                // reset content box including removing the search bar. will need to add it back in when going back to the search page
+                // toggle content box features (search results + search bar)
                 $('#results').hide();
                 $('#searchBar').hide();
 

@@ -84,7 +84,7 @@ app.get('/directory/itemProfile', function(req, res) {
 
     var queryString = 'SELECT * FROM itemdb.main_item_list WHERE name = ?';
     pool.query(queryString, req.query.name, function(error, rows) {
-        if (error) throw error 
+        if (error) throw error
 
         console.log('Item details:');
         for (var i = 0; i < rows.length; i++) {
