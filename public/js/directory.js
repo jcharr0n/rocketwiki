@@ -23,6 +23,7 @@
     window.itemSearch = function() {
 
         // grab values from the inputs, append them to the url, send off the request
+        // TODO: convert to jquery
         var category =  document.getElementById('category').value,
         rarity = document.getElementById('rarity').value,
         obtain_method = document.getElementById('obtain_method').value,
@@ -48,6 +49,7 @@
                     $('#viewport').append('<div id="results"></div>');
                     
                     // grab parent reference and convert response to json
+                    // TODO: convert to json
                     var parent = document.getElementById('results'),
                     resultsArray = JSON.parse(request.responseText);
 
