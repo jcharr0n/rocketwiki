@@ -8,8 +8,8 @@
     });
 
     document.onclick = function(e) {
-        if (e.target.getAttribute("class") == 'responseFader') {
-            itemProfile(e.target.innerText);
+        if (e.target.getAttribute("class") == 'responseItem') {
+            itemProfile(e.target.querySelector('.responseFader').innerText);
         }
         if (e.target.getAttribute("id") == 'back') {
             $('#back').hide();
@@ -57,7 +57,7 @@
 
                         // put item image into the element as the background image
                         div.style.backgroundImage = 'url(' + bodyThumbnailPath + resultsArray[i].image + ')';
-                        div.style.borderColor = assignBorderColor(resultsArray[i].rarity);
+                        div.style.borderColor = assignBorderColor(resultsArray[i].rarity1);
 
                         parent.appendChild(div);
 
@@ -78,8 +78,8 @@
     }
 
     // load the information for a specified item upon clicking its thumbnail
-    itemProfile = function(name) {
-        var url = 'directory/' + name;
+    itemProfile = function(itemName) {
+        var url = 'directory/itemProfile?name=' + itemName;
         request = new XMLHttpRequest();
         request.responseType = 'text';
         request.onreadystatechange = function() {
@@ -190,7 +190,7 @@
         $('#thumbnail').css('background-image', 'url(' + bodyThumbnailPath + info[0].image + ')');
         $('#itemName').text(info[0].name);
         $('#itemType').text(info[0].category);
-        $('#itemRarity').text(info[0].rarity);
+        $('#itemRarity').text(info[0].rarity1);
         $('#itemHitbox').text(info[0].hitbox); // add conditional for when item is not a body
     }
 

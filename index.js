@@ -38,10 +38,10 @@ app.use('/directory', router);
 app.get('/itemSearch', function(req, res) {
     
     // dynamically create query: only add populated fields to query string and param array
-    var queryString = 'SELECT name, image, rarity FROM itemdb.main_item_list WHERE',
+    var queryString = 'SELECT name, image, rarity1 FROM itemdb.main_item_list WHERE',
     passedParams = [],
     paramsToPass = [],
-    expectedParams = ['category', 'rarity', 'obtain_method', 'hitbox'],
+    expectedParams = ['category', 'rarity1', 'obtain_method', 'hitbox'],
 
     category = req.query.category,
     rarity = req.query.rarity,
@@ -80,10 +80,10 @@ app.get('/itemSearch', function(req, res) {
 });
 
 // endpoint 02: view a selected items full details (note: not yet distinct for dupe names)
-app.get('/directory/:itemName', function(req, res) {
+app.get('/directory/itemProfile', function(req, res) {
 
     var queryString = 'SELECT * FROM itemdb.main_item_list WHERE name = ?';
-    pool.query(queryString, req.params.itemName, function(error, rows) {
+    pool.query(queryString, req.query.name, function(error, rows) {
         if (error) throw error 
 
         console.log('Item details:');
