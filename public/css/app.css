@@ -152,44 +152,49 @@ a:visited {
   margin: auto;
   overflow: auto;
   position: relative;
-  width: calc(100% - 15px);
+  top: 75px;
+  width: 100%;
   height: max-content;
   text-align: left;
-  margin-left: 15px;
 }
 
 .responseItem {
   width: 146px;
   height: 146px;
-  line-height: 45px;
+  position: relative;
+  margin: 15px;
+  padding: 0;
+  line-height: 35px;
   float: left;
   color: black;
   border: 5px solid white;
   border-radius: 25px;
-  margin: 15px;
   text-align: center;
   background-position: center;
   background-size: cover;
+  transition: all 0.2s;
+}
+.responseItem:hover {
+  margin: 0px;
+  padding: 15px;
+}
+.responseItem:hover .responseFader {
+  opacity: 1;
 }
 
 .responseFader {
   opacity: 0;
+  border-radius: inherit;
   margin: 0;
   padding: 0;
-  border-radius: inherit;
   color: white;
   font-weight: bold;
   line-height: inherit;
   font-size: 20px;
-  height: inherit;
-  width: inherit;
-  position: relative;
-  background: rgba(0, 0, 0, 0);
-}
-.responseFader:hover {
-  opacity: 1;
+  height: max-content;
+  width: 100%;
+  transition: all 0.2s;
   background: rgba(0, 0, 0, 0.75);
-  transition: all 0.25s;
 }
 
 #back {

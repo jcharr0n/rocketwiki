@@ -4,6 +4,7 @@
 
     $(function() {
         $('#itemProfile').hide();
+        $('#back').hide();
     });
 
     document.onclick = function(e) {
@@ -11,6 +12,7 @@
             itemProfile(e.target.innerText);
         }
         if (e.target.getAttribute("id") == 'back') {
+            $('#back').hide();
             $('#itemProfile').hide();
             $('#searchBar').show();
             $('#results').show();
@@ -43,7 +45,7 @@
             request.onreadystatechange = function() {
                 if (request.readyState == 4 & request.status == 200) {
                     // when the request is returned, put it into the page
-                    $('#viewport').append('<div class="entry" id="results"></div>');
+                    $('#viewport').append('<div id="results"></div>');
                     
                     // grab parent reference and convert response to json
                     var parent = document.getElementById('results'),
@@ -92,6 +94,7 @@
 
                 // show the item profile
                 $('#itemProfile').show();
+                $('#back').show();
             }
         }
         request.open("GET", url, true);
