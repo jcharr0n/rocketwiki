@@ -172,7 +172,6 @@ a {
     text-align: center;
     background-position: center;
     background-size: cover;
-    transition: all .2s;
     &:hover {
         margin: 0px;
         padding: 15px;
@@ -197,13 +196,15 @@ a {
 }
 
 #back {
-    background-color: rgb(255, 133, 0);
+    background-color: black;
     width: 100px;
-    height: 50px;
-    border: 5px solid lightsteelblue;
+    height: 35px;
+    border: 2px solid rgb(255, 133, 0);
+    line-height: 15px;
     border-radius: 25px;
     font-size: 15px;
     font-weight: bold;
+    color: lightsteelblue;
     margin-top: 20px;
     margin-left: 20px;
 }

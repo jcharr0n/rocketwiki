@@ -63,8 +63,15 @@
 
                         // put item image into the element as the background image
                         div.style.backgroundImage = 'url(' + bodyThumbnailPath + resultsArray[i].image + ')';
-                        div.style.borderColor = assignBorderColor(resultsArray[i].rarity1);
-
+                        
+                        // if items have two different raritys, split the border color between the two
+                        if (resultsArray[i].rarity2) {
+                            div.style.borderLeftColor = div.style.borderTopColor = assignBorderColor(resultsArray[i].rarity1);
+                            div.style.borderBottomColor = div.style.borderRightColor = assignBorderColor(resultsArray[i].rarity2);
+                        }
+                        else {
+                            div.style.borderColor = assignBorderColor(resultsArray[i].rarity1);
+                        }
                         parent.appendChild(div);
 
                         // create fader for effect on hover

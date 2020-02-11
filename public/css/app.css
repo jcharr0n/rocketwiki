@@ -170,7 +170,6 @@ a:visited {
   text-align: center;
   background-position: center;
   background-size: cover;
-  transition: all 0.2s;
 }
 .responseItem:hover {
   margin: 0px;
@@ -195,13 +194,15 @@ a:visited {
 }
 
 #back {
-  background-color: #ff8500;
+  background-color: black;
   width: 100px;
-  height: 50px;
-  border: 5px solid lightsteelblue;
+  height: 35px;
+  border: 2px solid #ff8500;
+  line-height: 15px;
   border-radius: 25px;
   font-size: 15px;
   font-weight: bold;
+  color: lightsteelblue;
   margin-top: 20px;
   margin-left: 20px;
 }
