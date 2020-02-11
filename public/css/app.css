@@ -149,11 +149,9 @@ a:visited {
 }
 
 #results {
-  margin: auto;
-  overflow: auto;
   position: relative;
   top: 75px;
-  width: calc(100% - 20px);
+  width: calc(100% - 5px);
   height: 100%;
   text-align: left;
 }
