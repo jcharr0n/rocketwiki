@@ -153,19 +153,19 @@ a:visited {
   overflow: auto;
   position: relative;
   top: 75px;
-  width: 100%;
-  height: max-content;
+  width: calc(100% - 20px);
+  height: 100%;
   text-align: left;
 }
 
 .responseItem {
   width: 146px;
   height: 146px;
-  position: relative;
+  display: inline-block;
   margin: 15px;
   padding: 0;
+  overflow: hidden;
   line-height: 35px;
-  float: left;
   color: black;
   border: 5px solid white;
   border-radius: 25px;
@@ -191,8 +191,7 @@ a:visited {
   font-weight: bold;
   line-height: inherit;
   font-size: 20px;
-  height: max-content;
-  width: 100%;
+  width: 95%;
   transition: all 0.2s;
   background: rgba(0, 0, 0, 0.75);
 }
