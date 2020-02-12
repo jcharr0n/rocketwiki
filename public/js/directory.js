@@ -25,7 +25,6 @@
 
     // handle the page setup when the query results are returned
     window.itemSearch = function() {
-
         // grab values from the inputs, append them to the url, send off the request
         // TODO: convert to jquery
         var category =  document.getElementById('category').value,
@@ -53,7 +52,7 @@
                     $('#viewport').append('<div id="results"></div>');
                     
                     // grab parent reference and convert response to json
-                    // TODO: convert to json
+                    // TODO: simplify element manipulation with jquery
                     var parent = document.getElementById('results'),
                     resultsArray = JSON.parse(request.responseText);
 
@@ -63,7 +62,7 @@
 
                         // put item image into the element as the background image
                         div.style.backgroundImage = 'url(' + bodyThumbnailPath + resultsArray[i].image + ')';
-                        
+
                         // if items have two different raritys, split the border color between the two
                         if (resultsArray[i].rarity2) {
                             div.style.borderLeftColor = div.style.borderTopColor = assignBorderColor(resultsArray[i].rarity1);
