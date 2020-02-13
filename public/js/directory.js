@@ -39,6 +39,7 @@
         // one parameter to pass
         if (checkForParams(parameters)) {
             // only pass values to the query that have data
+            // todo: change this to pass an array so the helper can be refactored
             var url = filterUrl(category, rarity, obtain_method, hitbox);
 
             // remove any previously created results from the page
