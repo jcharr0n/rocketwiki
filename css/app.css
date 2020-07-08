@@ -63,7 +63,6 @@ body, html {
 a {
   text-decoration: none;
 }
-
 a:visited {
   color: black;
 }
@@ -94,13 +93,13 @@ a:visited {
   text-align: center;
   font-weight: bold;
 }
-.navItem :hover {
+.navItem:hover {
   background-color: black;
 }
-.navItem :hover a {
+.navItem:hover a {
   color: lightsteelblue !important;
 }
-.navItem :focus {
+.navItem:focus {
   color: orange;
 }
 
@@ -176,7 +175,6 @@ a:visited {
   position: relative;
   background: rgba(0, 0, 0, 0);
 }
-
 .responseFader:hover {
   opacity: 1;
   background: rgba(0, 0, 0, 0.75);

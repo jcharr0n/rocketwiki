@@ -11,12 +11,15 @@
 
     window.onload = function start(){
         buildSlideBar();
+        // test
+        console.log("using public js file");
     }
 
     // set interval for slider speed
     window.setInterval(scrollSlideBar, scrollInterval);
 
     // creates the slidebar for the header of the page
+    // optimize = does it really need this?
     function buildSlideBar()
     {
         // account for window size changing
@@ -94,13 +97,16 @@
         }
     }
 
-    // when hovering over a navbar item, slide out with css animation a further menu
-    // well, maybe a slide out. might look cleaner just to have it be instant on hover
-    // for example Item List -> Blueprints, Twitch Drops, RocketPass
-    // or          Item List -> Bodies, Wheels, Boosts, Trails
+    // when hovering over a navbar item, use slide out animation to display further menu
+    // for example:
+    //      Item List -> Blueprints -> Series -> (List)
+    //                   Rocket Pass -> 1 || 2 || 3 || 4
+    //                   Twitch Rewards -> Reward Packs || Stream Drops
+    //                   By Item Attribute -> (Type x Quality selectors in page)
+    //
     // will be a div whose width is set to 0 until its navbar item is hovered over,
-    // and it will have a left style of however many pixels the navbar is (+ margin)
+    // and have a left style of however many pixels the navbar is (+ margins)
 
-    // create custom overlay for each rarity type with the color of the rarity in-game
-    // could also do with border colors/border styling, radius separate corners
+    // consider changing rarity indicator from border color to something else, potentially
+    // an overlay to the thumbnail with a colored stripe, etc.
 })();

@@ -11,6 +11,8 @@
 
     window.onload = function start(){
         buildSlideBar();
+        // test
+        console.log("using private js file");
     }
 
     // set interval for slider speed
